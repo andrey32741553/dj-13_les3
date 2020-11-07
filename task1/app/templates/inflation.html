@@ -1,0 +1,55 @@
+<!DOCTYPE html>{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+          <table class="u-full-width">
+            <thead>
+            {% for title in titles %}
+              <th>{{ title }}</th>
+            {% endfor %}
+            </thead>
+            <tbody>
+              {% for item in info_list %}
+              <tr>
+                {% for info in item %}
+                  {% if info < 0 and info != '-' %}
+                    <td bgcolor="ForestGreen">{{ info }}</td>
+                  {% elif info >= 1 and info < 2 and info != item|first and info != item|last %}
+                    <td bgcolor="LightPink">{{ info }}</td>
+                  {% elif info >= 2 and info < 5 and info != item|first and info != item|last %}
+                    <td bgcolor="Tomato">{{ info }}</td>
+                  {% elif info >= 5 and info != item|first and info != item|last %}
+                    <td bgcolor="Red">{{ info }}</td>
+                  {% elif info == item|last %}
+                    <td bgcolor="Grey">{{ info }}</td>
+                  {% else %}
+                    <td> {{ info }} </td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        <!-- Ваша логика -->
+
+        </div>
+      </div>
+    {% endblock %}
+
+  </body>
+</html>
