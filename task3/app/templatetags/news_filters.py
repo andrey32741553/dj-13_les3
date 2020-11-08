@@ -39,4 +39,7 @@ def format_num_comments(value):
 @register.filter
 def format_selftext(value, count: int):
     text = value.split(' ')
-    return f"{' '.join(text[:count])} ... {' '.join(text[-count:])}"
+    if len(text) <= count * 2:
+        return f"{' '.join(text)}"
+    else:
+        return f"{' '.join(text[:count])} ... {' '.join(text[-count:])}"
