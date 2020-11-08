@@ -13,19 +13,30 @@
   </head>
 
   <body>
-  {% block content %}
     <nav class="row">
       <div class="nav-wrapper col s12">
         <a href="{% url 'home' %}" class="brand-logo">
         Компьютеры</a>
         <ul class="right hide-on-med-and-down">
+          {% if request.path == '/examples/' %}
+          <li class="active"><a href="{% url 'examples' %}">Примеры</a></li>
+          {% else %}
           <li><a href="{% url 'examples' %}">Примеры</a></li>
+          {% endif %}
+          {% if request.path == '/contacts/' %}
+          <li class="active"><a href="{% url 'contacts' %}">Контакты</a></li>
+          {% else %}
           <li><a href="{% url 'contacts' %}">Контакты</a></li>
+          {% endif %}
+          {% if request.path == '/about/' %}
+          <li class="active"><a href="{% url 'about' %}">О проекте</a></li>
+          {% else %}
           <li><a href="{% url 'about' %}">О проекте</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
-
+  {% block content %}
     <div class="row">
       <div class="col s12">
         <h1 class="col s12">Компьютеры Apple</h1>
