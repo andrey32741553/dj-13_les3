@@ -18,21 +18,9 @@
         <a href="{% url 'home' %}" class="brand-logo">
         Компьютеры</a>
         <ul class="right hide-on-med-and-down">
-          {% if request.path == '/examples/' %}
-          <li class="active"><a href="{% url 'examples' %}">Примеры</a></li>
-          {% else %}
-          <li><a href="{% url 'examples' %}">Примеры</a></li>
-          {% endif %}
-          {% if request.path == '/contacts/' %}
-          <li class="active"><a href="{% url 'contacts' %}">Контакты</a></li>
-          {% else %}
-          <li><a href="{% url 'contacts' %}">Контакты</a></li>
-          {% endif %}
-          {% if request.path == '/about/' %}
-          <li class="active"><a href="{% url 'about' %}">О проекте</a></li>
-          {% else %}
-          <li><a href="{% url 'about' %}">О проекте</a></li>
-          {% endif %}
+          <li {% if request.path == '/examples/' %} class="active" {% endif %}><a href="{% url 'examples' %}">Примеры</a></li>
+          <li {% if request.path == '/contacts/' %} class="active" {% endif %}><a href="{% url 'contacts' %}">Контакты</a></li>
+          <li {% if request.path == '/about/' %} class="active" {% endif %}><a href="{% url 'about' %}">О проекте</a></li>
         </ul>
       </div>
     </nav>
